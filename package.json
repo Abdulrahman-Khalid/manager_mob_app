@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "firebase": "^6.3.5",
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-redux": "^7.1.0",
