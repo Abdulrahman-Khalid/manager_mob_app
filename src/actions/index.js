@@ -24,6 +24,10 @@ can dispatch many actions from this action creator*/
 export const loginUser = ({ email, password }) => {
   return dispatch => {
     //then is with success, catch if not success
+    dispatch({
+      type: actionNames.LOGIN_USER
+    });
+
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
