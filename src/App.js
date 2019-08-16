@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
 import firebase from "firebase";
 import LoginForm from "./components/LoginForm";
+//handle asynchronous action creator after action finished return the action object
+import ReduxThunk from "redux-thunk"; //middleware
 
 class App extends Component {
   componentDidMount() {
@@ -21,8 +23,9 @@ class App extends Component {
   }
 
   render() {
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk)); //{} for any intial state want to pass to the application
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <LoginForm />
       </Provider>
     );
