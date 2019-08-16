@@ -3,6 +3,7 @@ import { View } from "react-native";
 
 const CardSection = props => {
   return (
+    //[style,over ride style]
     <View style={[styles.containerStyle, props.style]}>{props.children}</View>
   );
 };
