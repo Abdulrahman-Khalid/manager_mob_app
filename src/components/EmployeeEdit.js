@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import { CustomCard, CardSection, Button } from "./common";
 import { connect } from "react-redux";
-import { employeeUpdate, employeeCreate } from "../actions";
+import { employeeUpdate } from "../actions";
 import EmployeeForm from "./EmployeeForm";
+import _ from "lodash";
 
-class EmployeeCreate extends Component {
+class EmployeeEdit extends Component {
+  componentDidMount() {
+    _.each(this.props.employee, (value, prop) => {
+      //prop is the key
+      this.props.employeeUpdate({ prop, value });
+    });
+  }
+
   onButtonPress() {
     const { name, phone, shift } = this.props;
-    this.props.employeeCreate({ name, phone, shift: shift || "Monday" });
+    // this.props.employeeEdit({ name, phone, shift });
   }
 
   render() {
@@ -17,6 +25,7 @@ class EmployeeCreate extends Component {
         <EmployeeForm {...this.props} />
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>Save</Button>
+          <Button onPress={this.onButtonPress.bind(this)}>Fire Employee</Button>
         </CardSection>
       </CustomCard>
     );
@@ -30,5 +39,5 @@ const mapStateTopProps = state => {
 
 export default connect(
   mapStateTopProps,
-  { employeeUpdate, employeeCreate }
-)(EmployeeCreate);
+  { employeeUpdate }
+)(EmployeeEdit);
