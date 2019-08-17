@@ -37,7 +37,7 @@ class EmployeeList extends Component {
   // _keyExtractor = (item, index) => item.uid;
 
   render() {
-    console.log(this.props.employees);
+    // console.log(this.props.employees);
     return (
       //Deprecated ListView
       // <ListView
