@@ -29,6 +29,8 @@ class EmployeeList extends Component {
   // }
 
   _renderItem({ item }) {
+    //employees.item represents each employee
+    //destructing employess and get item
     return <ListItem employee={item} />;
   }
 
@@ -52,7 +54,9 @@ class EmployeeList extends Component {
       <FlatList
         data={this.props.employees}
         renderItem={this._renderItem}
+        //renderItem all back function get only employee if I want the item of with index and item (employee.item)
         keyExtractor={employee => employee.uid}
+        //keyExtractor call back function get employee.item
       />
     );
   }

@@ -61,3 +61,18 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
     //can not return action using redux thunk return ()=>{}
   };
 };
+
+export const employeeDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+    firebase
+      .database()
+      .ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .remove()
+      .then(() => {
+        Actions.employeeList({ type: "reset" });
+      }); //{ type: "reset"} don't show back button
+    //can not return action using redux thunk return ()=>{}
+  };
+};

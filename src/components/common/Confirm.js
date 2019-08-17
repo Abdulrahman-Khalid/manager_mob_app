@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, Modal } from "react-native";
 import { CardSection } from "./CardSection";
 import { Button } from "./Button";
+//can't import button and cardsection from ./index
 
 const Confirm = ({ children, visible, onAccept, onDecline }) => {
   const { containerStyle, textStyle, cardSectionStyle } = styles;
@@ -12,6 +13,8 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
       transparent
       animationType="slide"
       onRequestClose={() => {}}
+      // onRequestClose should be there even if empty for android
+      // it is call back function called when modal is closed
     >
       <View style={containerStyle}>
         <CardSection style={cardSectionStyle}>
@@ -19,6 +22,7 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
         </CardSection>
 
         <CardSection>
+          {/* onAccept and onDecline is callback functions pass ref to the func not use () */}
           <Button onPress={onAccept}>Yes</Button>
           <Button onPress={onDecline}>No</Button>
         </CardSection>
