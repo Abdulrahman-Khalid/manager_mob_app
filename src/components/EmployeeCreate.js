@@ -16,7 +16,7 @@ class EmployeeCreate extends Component {
         {/* pass this.props to employee form props */}
         <EmployeeForm {...this.props} />
         <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>Save</Button>
+          <Button onPress={this.onButtonPress.bind(this)}>Create</Button>
         </CardSection>
       </CustomCard>
     );
