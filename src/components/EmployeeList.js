@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 // import { ListView } from "react-native"; //deprecated
-import { FlatList } from "react-native";
-import { ListItem } from "./ListItem";
+import { FlatList, Text } from "react-native";
+// import { ListItem } from "./ListItem"; // 3'alat 5ales {} //error unable to resolve module
+import ListItem from "./ListItem"; // de el sa7
 import { connect } from "react-redux";
 import { employeesFetch } from "../actions";
 import _ from "lodash";
@@ -27,14 +28,14 @@ class EmployeeList extends Component {
   //   this.dataSource = ds.cloneWithRows(this.props.employees);
   // }
 
-  _renderItem(employee) {
-    return <ListItem employee={employee} />;
+  _renderItem({ item }) {
+    return <ListItem employee={item} />;
   }
 
   // _keyExtractor = (item, index) => item.uid;
 
   render() {
-    console.log(this.props);
+    console.log(this.props.employees);
     return (
       //Deprecated ListView
       // <ListView
@@ -48,12 +49,11 @@ class EmployeeList extends Component {
       // { {name:,phone:,shift:, uid:"213"},"233":{name:,phone:,shift:, uid:"233"}}
 
       // />
-      // <FlatList
-      //   data={this.props.employees}
-      //   renderItem={this._renderItem}
-      //   keyExtractor={employee => employee.uid}
-      // />
-      <Text />
+      <FlatList
+        data={this.props.employees}
+        renderItem={this._renderItem}
+        keyExtractor={employee => employee.uid}
+      />
     );
   }
 }
